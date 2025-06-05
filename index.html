@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Top Shine Cleaning | Professional Cleaning Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=WDXL+Lubrifont+TC&display=swap" rel="stylesheet">
+    <style>
+        .section-bg {
+            background-color: #f0f9ff;
+            position: relative;
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Custom font for business name and nav links */
+        .business-name {
+            font-family: 'WDXL Lubrifont TC', sans-serif;
+        }
+        
+        .nav-link {
+            font-family: 'WDXL Lubrifont TC', sans-serif;
+        }
+        
+        /* Custom image slider */
+        .slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .slide-nav.prev {
+            left: 1rem;
+        }
+        
+        .slide-nav.next {
+            right: 1rem;
+        }
+        
+        .slide-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .slide-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .slide-indicator.active {
+            background: white;
+        }
+        
+        /* Hover effect for services */
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Testimonial cards */
+        .testimonial-card {
+            position: relative;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Animation for bubbles */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-bubble {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 1s; }
+        .delay-3 { animation-delay: 1.5s; }
+        
+        /* Form input focus */
+        .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <div class="bg-yellow-400 text-blue-800 text-sm py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    <span>Call: (470) 222-0161</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-envelope mr-2"></i>
+                    <span>tiptopshinecleaning@gmail.com</span>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <span>Mon-Fri: 8AM - 6PM | Sat-Sun: 11AM - 6PM</span>
+            </div>
+        </div>
+    </div>
+    <nav class="bg-blue-700 shadow-lg sticky top-0 z-50">
+        <!-- Main navigation -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="">
+                        <img src="Images/LOGO.png" alt="Tip Top Shine Logo" class="h-14 w-14 object-contain">
+                    </div>
+                    <div class="text-white ml-3">
+                        <div class="text-2xl font-bold business-name">Tip Top Shine</div>
+                    </div>
+                </div>
+
+                <div class="hidden sm:flex sm:items-center sm:justify-end flex-1">
+                    <div class="flex space-x-8 mr-8">
+                        <a href="#home" class="text-white hover:text-blue-200 inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Home</a>
+                        <a href="#about" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">About</a>
+                        <a href="#services" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Services</a>
+                        <a href="#gallery" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Our Work</a>
+                        <a href="#contact" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Contact</a>
+                    </div>
+                    
+                    <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-6 py-2 rounded-lg font-bold flex items-center transition duration-300">
+                        Book Now
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden sm:hidden" id="mobile-menu">
+            <div class="pt-2 pb-4 space-y-1 bg-blue-800">
+                <a href="#home" class="bg-blue-900 text-white block pl-3 pr-4 py-2 text-base font-medium">Home</a>
+                <a href="#about" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">About</a>
+                <a href="#services" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">Services</a>
+                <a href="#gallery" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">Our Work</a>
+                <a href="#contact" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">Contact</a>
+                <div class="mt-2 p-3">
+                    <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-4 py-2 rounded-lg font-bold flex items-center justify-center transition duration-300 w-full">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative min-h-screen flex items-center">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-blue-600 rounded-full opacity-20"></div>
+            <div class="absolute bottom-20 left-20 w-24 h-24 bg-blue-500 rounded-full opacity-15"></div>
+            <div class="absolute top-40 right-20 w-20 h-20 bg-blue-400 rounded-full opacity-25"></div>
+            <div class="absolute bottom-40 right-40 w-16 h-16 bg-blue-300 rounded-full opacity-20"></div>
+            <div class="absolute top-60 left-1/3 w-12 h-12 bg-blue-200 rounded-full opacity-15"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
+                <!-- Text Content - Left Side -->
+                <div class="text-left space-y-6">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                        Helping Beautify <br>
+                        <span class="text-yellow-400">One House at a Time!!</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl text-blue-100 leading-relaxed">
+                        Professional pressure washing services in <br>
+                        Savannah and surrounding areas
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center shadow-lg">
+                            Book Now
+                        </a>
+                        <a href="tel:+14702220161" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center shadow-lg">
+                            Get 20% Off Roof & House Washes!
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Video Card - Right Side -->
+                <div class="flex justify-start lg:justify-center">
+                    <div class="relative">
+                        <!-- Video Card -->
+                        <div class="bg-white rounded-2xl p-4 shadow-2xl transform hover:scale-105 transition duration-300">
+                            <!-- Trust Indicator -->
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg z-10">
+                                Premium Results
+                            </div>
+                            
+                            <div class="relative h-[450px] w-[400px] overflow-hidden rounded-xl">
+                                <iframe 
+                                    src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Ftiptop.shinecleaning.2025%2Fvideos%2F1428707841905250%2F&show_text=false&width=267&autoplay=true&muted=true&t=0"
+                                    width="100%"
+                                    height="100%"
+                                    style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;"
+                                    scrolling="no"
+                                    frameborder="0"
+                                    allowfullscreen="true"
+                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                    allowFullScreen="true">
+                                </iframe>
+                            </div>
+                            
+                            <!-- Navigation dots (decorative) -->
+                            <div class="flex justify-center mt-4 space-x-2">
+                                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation arrows (decorative) -->
+                        <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition duration-300">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition duration-300">
+                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+       <!-- Services Section -->
+       <section id="services" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-800">Our Services</h2>
+            
+            <!-- Service Navigation Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="showService('commercial-cleaning')" class="service-btn active px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="commercial-cleaning">
+                    Commercial Cleaning
+                </button>
+                <button onclick="showService('residential-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="residential-cleaning">
+                    Residential Cleaning
+                </button>
+                <button onclick="showService('move-in-move-out')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="move-in-move-out">
+                    Move-in & Move-out
+                </button>
+                <button onclick="showService('hoarder-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="hoarder-cleaning">
+                    Hoarder Cleaning
+                </button>
+                <button onclick="showService('post-construction-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="post-construction-cleaning">
+                    Post Construction Cleaning
+                </button>
+            </div>
+            
+            <!-- Service Content Card -->
+            <div class="max-w-6xl mx-auto">
+                <!-- Commercial Cleaning -->
+                <div id="commercial-cleaning" class="service-content bg-blue-800 text-white rounded-2xl p-8 md:p-12 shadow-xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Commercial Cleaning</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                Transform your workspace with our expert commercial cleaning services. From offices to retail spaces, we ensure a spotless, hygienic environment for your staff and clients. We handle everything from floor care and surface sanitizing to trash removal and detailed dusting—so you can focus on running your business.
+                            </p>
+                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                                Book Now
+                            </a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 opacity-20 rounded-full shadow-lg"></div>
+                            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-400 opacity-30 rounded-full shadow-lg"></div>
+                            <img src="Images/Commercial.jpg" alt="House washing service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Residential Cleaning -->
+                <div id="residential-cleaning" class="service-content bg-blue-800 text-white rounded-2xl p-8 md:p-12 shadow-xl hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Residential Cleaning</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                Refresh your home with our trusted residential cleaning solutions. Whether it's a quick tidy-up or a deep seasonal clean, we bring the sparkle to every corner—kitchens, bathrooms, bedrooms, and more. Our friendly team treats your space with care, leaving it fresh, neat, and stress-free.
+                            </p>
+                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                                Book Now
+                            </a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 opacity-20 rounded-full shadow-lg"></div>
+                            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-400 opacity-30 rounded-full shadow-lg"></div>
+                            <img src="Images/Residential.jpg" alt="Roof washing service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Move-in & Move-out Service -->
+                <div id="move-in-move-out" class="service-content bg-blue-800 text-white rounded-2xl p-8 md:p-12 shadow-xl hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Move-in & Move-out</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                Comprehensive cleaning for property transitions, ensuring spaces are spotless for new occupants. We handle deep cleaning of all areas, including inside appliances, cabinets, and thorough sanitization to make your new space move-in ready.
+                            </p>
+                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                                Book Now
+                            </a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 opacity-20 rounded-full shadow-lg"></div>
+                            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-400 opacity-30 rounded-full shadow-lg"></div>
+                            <img src="/Images//Move-in.jpg" alt="Move-in move-out cleaning service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hoarder Cleaning Service -->
+                <div id="hoarder-cleaning" class="service-content bg-blue-800 text-white rounded-2xl p-8 md:p-12 shadow-xl hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Hoarder Cleaning</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                Specialized cleaning services for challenging situations with compassionate and thorough approach. We understand the sensitivity required and work with discretion to restore spaces safely and efficiently while respecting your privacy and dignity.
+                            </p>
+                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                                Book Now
+                            </a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 opacity-20 rounded-full shadow-lg"></div>
+                            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-400 opacity-30 rounded-full shadow-lg"></div>
+                            <img src="Images/Hoarder.jpg" alt="Hoarder cleaning service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Construction Cleaning Service -->
+                <div id="post-construction-cleaning" class="service-content bg-blue-800 text-white rounded-2xl p-8 md:p-12 shadow-xl hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Post Construction Cleaning</h3>
+                            <p class="text-lg mb-6 leading-relaxed">
+                                Heavy-duty cleanup after construction or renovation projects, removing debris and preparing spaces. We handle dust elimination, debris removal, and detailed cleaning to transform construction sites into pristine, move-in ready environments.
+                            </p>
+                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                                Book Now
+                            </a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 opacity-20 rounded-full shadow-lg"></div>
+                            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-400 opacity-30 rounded-full shadow-lg"></div>
+                            <img src="/Images//post.jpg" alt="Post Construction Cleaning Service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Request Card -->
+            <div class="mt-12 bg-blue-600 rounded-lg shadow-xl p-8 text-white text-center">
+                <div class="flex flex-col md:flex-row items-center justify-center mb-6">
+                    <div class="bg-yellow-400 rounded-full w-16 h-16 flex items-center justify-center mb-4 md:mb-0 md:mr-4 shadow-lg">
+                        <i class="fas fa-home text-blue-600 text-2xl"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold mb-2">Specialty Cleaning Needs</h3>
+                        <p class="text-blue-100">Need something beyond routine cleaning? Contact us for customized cleaning solutions. From detailed appliance cleanups to complex deep-cleaning projects, we’re equipped to handle it all with precision and care.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    Request Custom Service
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section (Image Slider) -->
+    <section id="gallery" class="py-20 bg-blue-700 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Our Work</h2>
+                <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+                <p class="mt-4 text-lg text-blue-200 max-w-3xl mx-auto">See the transformation with our before & after gallery</p>
+            </div>
+            
+            <div class="slider relative rounded-xl overflow-hidden shadow-xl">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <img src="Images/post.jpg" alt="Cleaning Service" class="border-4 border-white">
+                    <div class="slide-caption">
+                        <h3 class="text-xl font-bold">Post-Construction Cleanup</h3>
+                        <p>Transforming construction site to move-in ready home</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="Images/Residential.jpg" alt="Cleaning Service" class="border-4 border-white">
+                    <div class="slide-caption">
+                        <h3 class="text-xl font-bold">Residential Deep Clean</h3>
+                        <p>Kitchen transformation after our deep clean service</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="Images/Commercial.jpg" alt="Cleaning Service" class="border-4 border-white">
+                    <div class="slide-caption">
+                        <h3 class="text-xl font-bold">Commercial Space</h3>
+                        <p>Office space sparkling clean</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <img src="Images/Hoarder.jpg" alt="Cleaning Service" class="border-4 border-white">
+                    <div class="slide-caption">
+                        <h3 class="text-xl font-bold">Hoarder Cleaning</h3>
+                        <p>Professional Hoarder Cleaning Service</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation buttons -->
+                <button class="slide-nav prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <button class="slide-nav next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Indicators -->
+                <div class="slide-indicators">
+                    <button class="slide-indicator active"></button>
+                    <button class="slide-indicator"></button>
+                    <button class="slide-indicator"></button>
+                    <button class="slide-indicator"></button>
+                </div>
+            </div>
+            
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-40 overflow-hidden rounded-lg shadow-sm">
+                    <img src="Images/Sample 6.jpg" alt="Cleaning work" class="w-full h-full object-cover hover:scale-105 transition duration-300 border-4 border-white">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-sm">
+                    <img src="Images/Sample1.jpg" alt="Cleaning work" class="w-full h-full object-cover hover:scale-105 transition duration-300 border-4 border-white">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-sm">
+                    <img src="Images/Sample5.jpg" alt="Cleaning work" class="w-full h-full object-cover hover:scale-105 transition duration-300 border-4 border-white">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-sm">
+                    <img src="Images/Sample3.jpg" alt="Cleaning work" class="w-full h-full object-cover hover:scale-105 transition duration-300 border-4 border-white">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section-bg py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4">About Us</h2>
+                <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg">
+                        <img src="/Images//About_us.jpg" alt="Tip Top Shine Cleaning Team" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-blue-700 mb-4">Our Story</h3>
+                    <p class="text-gray-600 mb-6">At Tip Top Shine Cleaning, we believe that a clean space is a happy space. Proudly serving homes and businesses for over three years, our journey began with post-construction clean-ups and has since expanded to include residential, commercial, and salon cleaning services.</p>
+                    
+                    <p class="text-gray-600 mb-6">We're more than just a cleaning company—we're a trusted partner for busy families, business owners, and professionals who value quality, consistency, and exceptional customer service. Our loyal clients choose us because we always show up, shine bright, and make cleanliness stress-free.</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <p class="italic text-blue-800">"We don't just clean your space, we transform it into a sanctuary where you can relax, work, and thrive."</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-blue-600 text-2xl mb-2">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800">Professional Team</h4>
+                            <p class="text-sm text-gray-600">Licensed and fully insured professionals</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-blue-600 text-2xl mb-2">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800">Customer Focus</h4>
+                            <p class="text-sm text-gray-600">Personalized cleaning plans for each client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-blue-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
+                <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+                <p class="mt-4 text-lg text-blue-200 max-w-3xl mx-auto">Don't just take our word for it - here's what our clients have to say</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white font-bold">JS</div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Jane Smith</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"They made my house look and smell brand new! I was amazed at how thorough they were. Every nook and cranny was spotless. I've already booked my next cleaning!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">MR</div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Michael Rodriguez</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Always professional and reliable—Tip Top is my go-to! They've been cleaning my office for over a year and never disappoint. The team is courteous and does fantastic work."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white font-bold">ST</div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Sarah Thompson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"After construction, they left our home sparkling. Highly recommend! They removed all the dust and debris perfectly. It was like moving into a brand new home."</p>
+                </div>
+            </div>
+            
+            <!-- Trust indicators -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">3+</div>
+                    <div class="text-blue-800 font-medium">Years Experience</div>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">100%</div>
+                    <div class="text-blue-800 font-medium">Satisfaction Guarantee</div>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">500+</div>
+                    <div class="text-blue-800 font-medium">Happy Clients</div>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">24/7</div>
+                    <div class="text-blue-800 font-medium">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section-bg py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Ready to give your space the Tip Top Shine treatment? Contact us today!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-6">Contact Form</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="John Doe">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="your@email.com">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="(123) 456-7890">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="service" class="block text-gray-700 font-medium mb-2">Service Needed</label>
+                                <select id="service" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300">
+                                    <option value="">Select a service</option>
+                                    <option value="residential">Residential Cleaning</option>
+                                    <option value="commercial">Commercial Cleaning</option>
+                                    <option value="post-construction">Post-Construction Cleaning</option>
+                                    <option value="salon">Salon Cleaning</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="message" rows="4" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Tell us about your cleaning needs..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold text-blue-700 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">tiptopshinecleaning@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">+1 (470) 222-0161</p>
+                                    <p class="text-sm text-gray-500">Text or call - we respond quickly!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fab fa-facebook-f text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Facebook</h4>
+                                    <p class="text-gray-600">Tip Top Shine Cleaning</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Service Area</h4>
+                                    <p class="text-gray-600">Atlanta metro and surrounding areas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">Business Hours</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Monday - Friday</span>
+                                    <span class="text-gray-900 font-medium">8:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Saturday</span>
+                                    <span class="text-gray-900 font-medium">9:00 AM - 4:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Sunday</span>
+                                    <span class="text-gray-900 font-medium">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-broom mr-2"></i> Tip Top Shine
+                    </h3>
+                    <p class="text-blue-200">Professional cleaning services for homes and businesses across Atlanta metro area.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-blue-200 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white transition duration-300">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-blue-200 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-blue-200 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#gallery" class="text-blue-200 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="#about" class="text-blue-200 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#testimonials" class="text-blue-200 hover:text-white transition duration-300">Testimonials</a></li>
+                        <li><a href="#contact" class="text-blue-200 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Residential Cleaning</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Commercial Cleaning</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Post-Construction</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Salon Cleaning</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Laundry Services</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Pressure Washing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2 text-blue-200"></i>
+                            <a href="mailto:tiptopshinecleaning@gmail.com" class="text-blue-200 hover:text-white transition duration-300">tiptopshinecleaning@gmail.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2 text-blue-200"></i>
+                            <a href="tel:+14702220161" class="text-blue-200 hover:text-white transition duration-300">(470) 222-0161</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-blue-200"></i>
+                            <span class="text-blue-200">Atlanta, GA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-300">
+                <p>&copy; 2023 Tip Top Shine Cleaning. All rights reserved. | Website by [Your Company]</p>
+                <div class="mt-2 text-sm">
+                    <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+      // Service tabs functionality
+function showService(serviceId) {
+    // Hide all service content
+    const allServices = document.querySelectorAll('.service-content');
+    allServices.forEach(service => {
+        service.classList.add('hidden');
+    });
+    
+    // Show selected service
+    const selectedService = document.getElementById(serviceId);
+    if (selectedService) {
+        selectedService.classList.remove('hidden');
+    }
+    
+    // Update button states - inactive buttons are blue, active is yellow
+    const allButtons = document.querySelectorAll('.service-btn');
+    allButtons.forEach(btn => {
+        btn.classList.remove('active', 'bg-yellow-400', 'text-blue-800');
+        btn.classList.add('bg-blue-600', 'text-white');
+    });
+    
+    // Activate clicked button - make it yellow
+    const activeButton = document.querySelector(`[data-service="${serviceId}"]`);
+    if (activeButton) {
+        activeButton.classList.add('active', 'bg-yellow-400', 'text-blue-800');
+        activeButton.classList.remove('bg-blue-600', 'text-white');
+    }
+}
+
+// Initialize first service on page load
+document.addEventListener('DOMContentLoaded', function() {
+    showService('commercial-cleaning');
+});
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isOpen);
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Image slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        const nextBtn = document.querySelector('.next');
+        const prevBtn = document.querySelector('.prev');
+        
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => showSlide(index));
+        });
+        
+        // Auto slide change every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
