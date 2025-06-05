@@ -135,7 +135,7 @@
         }
         
         .floating-bubble {
-            animation: float 6s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
         
         .delay-1 { animation-delay: 0.5s; }
@@ -165,9 +165,230 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #2563eb;
         }
+        
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #1e40af;
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #1e40af;
+            font-size: 20px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .modal-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .modal-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .modal-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .modal-btn {
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .modal-btn-primary {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .modal-btn-secondary {
+            background: #f3f4f6;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .modal-btn-secondary:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
+    <!-- Limited Time Offer Modal -->
+    <div id="discountModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="modal-title">
+                    🎉 20% LIMITED TIME OFFER 🎉
+                </h2>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-2xl font-bold text-blue-800 text-center mb-4">
+                    Tip Top Shine Cleaning (Kitchen Special)
+                </h3>
+                
+                <!-- Pricing section -->
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold">Base Service (2 hours)</span>
+                        <span class="text-xl font-bold text-blue-800">$150.00</span>
+                    </div>
+                    
+                    <div class="text-sm text-gray-600 mb-3">
+                        <div class="flex justify-between">
+                            <span>+ Window Sills (Each), 5 minutes</span>
+                            <span>$3.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>+ Laundry (Each Load, wash, dry, fold), 5 minutes</span>
+                            <span>$20.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <p class="text-center text-gray-700 mb-4 font-medium">
+                    We understand the importance of having a clean home!
+                </p>
+                
+                <h4 class="font-bold text-blue-800 mb-3">Service provided:</h4>
+                <ul class="modal-features">
+                    <li>Oven and stove cleaning</li>
+                    <li>Degreasing all surfaces</li>
+                    <li>Dusting and wiping all cabinets (Outside)</li>
+                    <li>Fridge cleaning (Inside and out)</li>
+                    <li>Wiping and disinfecting all appliances</li>
+                    <li>Wall spot cleaning</li>
+                    <li>Baseboards</li>
+                    <li>Sweeping and mopping</li>
+                </ul>
+                
+                <p class="text-xs text-gray-500 mt-3 italic">
+                    (Organizing cabinets is an hourly rate)
+                </p>
+                
+                <p class="text-sm text-blue-700 mt-3 font-medium">
+                    Please add on below any extras as this is a kitchen special. It has the prices listed. 
+                    Please add in notes how many of each add on there will be.
+                </p>
+                
+                <div class="modal-buttons">
+                    <a href="book-now.html" class="modal-btn modal-btn-primary">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book This Special Now
+                    </a>
+                    <button onclick="closeModal()" class="modal-btn modal-btn-secondary">
+                        Maybe Later
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Navigation -->
     <div class="bg-yellow-400 text-blue-800 text-sm py-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -201,7 +422,7 @@
                 </div>
 
                 <div class="hidden sm:flex sm:items-center sm:justify-end flex-1">
-                    <div class="flex space-x-8 mr-8">
+                    <div class="flex space-x-8 ml-auto">
                         <a href="#home" class="text-white hover:text-blue-200 inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Home</a>
                         <a href="#about" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">About</a>
                         <a href="#services" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Services</a>
@@ -209,7 +430,7 @@
                         <a href="#contact" class="text-blue-200 hover:text-white inline-flex items-center px-1 pt-1 text-lg font-medium transition duration-300 nav-link">Contact</a>
                     </div>
                     
-                    <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-6 py-2 rounded-lg font-bold flex items-center transition duration-300">
+                    <a href="book-now.html" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-6 py-2 rounded-lg font-bold flex items-center transition duration-300 ml-8">
                         Book Now
                     </a>
                 </div>
@@ -238,7 +459,7 @@
                 <a href="#gallery" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">Our Work</a>
                 <a href="#contact" class="text-blue-200 hover:bg-blue-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">Contact</a>
                 <div class="mt-2 p-3">
-                    <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-4 py-2 rounded-lg font-bold flex items-center justify-center transition duration-300 w-full">
+                    <a href="book-now.html" class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 px-4 py-2 rounded-lg font-bold flex items-center justify-center transition duration-300 w-full">
                         Book Now
                     </a>
                 </div>
@@ -250,45 +471,45 @@
     <section id="home" class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative min-h-screen flex items-center">
         <!-- Background decorative elements -->
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-32 h-32 bg-blue-600 rounded-full opacity-20"></div>
-            <div class="absolute bottom-20 left-20 w-24 h-24 bg-blue-500 rounded-full opacity-15"></div>
-            <div class="absolute top-40 right-20 w-20 h-20 bg-blue-400 rounded-full opacity-25"></div>
-            <div class="absolute bottom-40 right-40 w-16 h-16 bg-blue-300 rounded-full opacity-20"></div>
-            <div class="absolute top-60 left-1/3 w-12 h-12 bg-blue-200 rounded-full opacity-15"></div>
+            <div class="absolute top-20 left-10 w-32 h-32 bg-blue-600 rounded-full opacity-20 floating-bubble"></div>
+            <div class="absolute bottom-20 left-20 w-24 h-24 bg-blue-500 rounded-full opacity-15 floating-bubble delay-1"></div>
+            <div class="absolute top-40 right-20 w-20 h-20 bg-blue-400 rounded-full opacity-25 floating-bubble delay-2"></div>
+            <div class="absolute bottom-40 right-40 w-16 h-16 bg-blue-300 rounded-full opacity-20 floating-bubble delay-3"></div>
+            <div class="absolute top-60 left-1/3 w-12 h-12 bg-blue-200 rounded-full opacity-15 floating-bubble delay-1"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] py-8 sm:py-12 lg:py-16">
                 <!-- Text Content - Left Side -->
-                <div class="text-left space-y-6">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+                <div class="text-left space-y-6 sm:space-y-8 order-2 lg:order-1 px-2 sm:px-0">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Bringing Sparkle <br>
                         <span class="text-yellow-400">One Home at a Time!!</span>
                     </h1>
-                    <p class="text-xl sm:text-2xl text-blue-100 leading-relaxed">
-                        Professional cleaning services <br>for homes and businesses in Savannah and surrounding areas.
+                    <p class="text-base sm:text-lg lg:text-xl xl:text-2xl text-blue-100 leading-relaxed px-2 sm:px-0">
+                        Professional cleaning services <br class="hidden sm:block">for homes and businesses in Savannah and surrounding areas.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center shadow-lg">
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 sm:pt-6 px-2 sm:px-0">
+                        <a href="book-now.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg transition duration-300 text-center shadow-lg">
                             Book Now
                         </a>
-                        <a href="tel:+14702220161" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center shadow-lg">
+                        <a href="tel:+14702220161" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 sm:py-4 px-6 sm:px-8 rounded-full text-base sm:text-lg transition duration-300 text-center shadow-lg">
                             Get 20% Off Roof & House Washes!
                         </a>
                     </div>
                 </div>
                 
                 <!-- Video Card - Right Side -->
-                <div class="flex justify-start lg:justify-center">
-                    <div class="relative">
+                <div class="flex justify-center order-1 lg:order-2">
+                    <div class="relative floating-bubble delay-1">
                         <!-- Video Card -->
-                        <div class="bg-white rounded-2xl p-4 shadow-2xl transform hover:scale-105 transition duration-300">
+                        <div class="bg-white rounded-2xl p-3 sm:p-4 shadow-2xl transform hover:scale-105 transition duration-300">
                             <!-- Trust Indicator -->
-                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg z-10">
+                            <div class="absolute -top-2 sm:-top-3 -right-2 sm:-right-3 bg-yellow-400 text-blue-900 px-3 sm:px-4 py-1 sm:py-2 rounded-full font-bold text-xs sm:text-sm shadow-lg z-10">
                                 Premium Results
                             </div>
                             
-                            <div class="relative h-[450px] w-[400px] overflow-hidden rounded-xl">
+                            <div class="relative h-[280px] w-[250px] sm:h-[350px] sm:w-[300px] lg:h-[450px] lg:w-[400px] overflow-hidden rounded-xl">
                                 <iframe 
                                     src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Ftiptop.shinecleaning.2025%2Fvideos%2F1428707841905250%2F&show_text=false&width=267&autoplay=true&muted=true&t=0"
                                     width="100%"
@@ -302,26 +523,11 @@
                                 </iframe>
                             </div>
                             
-                            <!-- Navigation dots (decorative) -->
-                            <div class="flex justify-center mt-4 space-x-2">
-                                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-                                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                            <!-- Bottom Trust Indicator -->
+                            <div class="mt-3 sm:mt-4 bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-full font-bold text-xs sm:text-sm text-center shadow-lg">
+                                Click the video
                             </div>
                         </div>
-                        
-                        <!-- Navigation arrows (decorative) -->
-                        <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition duration-300">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition duration-300">
-                            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -335,19 +541,19 @@
             
             <!-- Service Navigation Buttons -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="showService('commercial-cleaning')" class="service-btn active px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="commercial-cleaning">
+                <button onclick="showService('commercial-cleaning')" class="service-btn active px-6 py-3 bg-blue-600 text-white rounded-full font-medium  transition duration-300 shadow-md hover:shadow-lg" data-service="commercial-cleaning">
                     Commercial Cleaning
                 </button>
-                <button onclick="showService('residential-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="residential-cleaning">
+                <button onclick="showService('residential-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium  transition duration-300 shadow-md hover:shadow-lg" data-service="residential-cleaning">
                     Residential Cleaning
                 </button>
-                <button onclick="showService('move-in-move-out')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="move-in-move-out">
+                <button onclick="showService('move-in-move-out')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium  transition duration-300 shadow-md hover:shadow-lg" data-service="move-in-move-out">
                     Move-in & Move-out
                 </button>
-                <button onclick="showService('hoarder-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="hoarder-cleaning">
+                <button onclick="showService('hoarder-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium  transition duration-300 shadow-md hover:shadow-lg" data-service="hoarder-cleaning">
                     Hoarder Cleaning
                 </button>
-                <button onclick="showService('post-construction-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg" data-service="post-construction-cleaning">
+                <button onclick="showService('post-construction-cleaning')" class="service-btn px-6 py-3 bg-blue-600 text-white rounded-full font-medium  transition duration-300 shadow-md hover:shadow-lg" data-service="post-construction-cleaning">
                     Post Construction Cleaning
                 </button>
             </div>
@@ -362,7 +568,7 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Transform your workspace with our expert commercial cleaning services. From offices to retail spaces, we ensure a spotless, hygienic environment for your staff and clients. We handle everything from floor care and surface sanitizing to trash removal and detailed dusting—so you can focus on running your business.
                             </p>
-                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                            <a href="book-now.html" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
                                 Book Now
                             </a>
                         </div>
@@ -382,7 +588,7 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Refresh your home with our trusted residential cleaning solutions. Whether it's a quick tidy-up or a deep seasonal clean, we bring the sparkle to every corner—kitchens, bathrooms, bedrooms, and more. Our friendly team treats your space with care, leaving it fresh, neat, and stress-free.
                             </p>
-                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                            <a href="book-now.html" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
                                 Book Now
                             </a>
                         </div>
@@ -402,7 +608,7 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Comprehensive cleaning for property transitions, ensuring spaces are spotless for new occupants. We handle deep cleaning of all areas, including inside appliances, cabinets, and thorough sanitization to make your new space move-in ready.
                             </p>
-                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                            <a href="book-now.html" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
                                 Book Now
                             </a>
                         </div>
@@ -422,7 +628,7 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Specialized cleaning services for challenging situations with compassionate and thorough approach. We understand the sensitivity required and work with discretion to restore spaces safely and efficiently while respecting your privacy and dignity.
                             </p>
-                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                            <a href="book-now.html" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
                                 Book Now
                             </a>
                         </div>
@@ -442,7 +648,7 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Heavy-duty cleanup after construction or renovation projects, removing debris and preparing spaces. We handle dust elimination, debris removal, and detailed cleaning to transform construction sites into pristine, move-in ready environments.
                             </p>
-                            <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
+                            <a href="book-now.html" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-3 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg">
                                 Book Now
                             </a>
                         </div>
@@ -466,7 +672,7 @@
                         <p class="text-blue-100">Need something beyond routine cleaning? Contact us for customized cleaning solutions. From detailed appliance cleanups to complex deep-cleaning projects, we’re equipped to handle it all with precision and care.</p>
                     </div>
                 </div>
-                <a href="#contact" class="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                <a href="book-now.html" class="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
                     Request Custom Service
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -476,7 +682,15 @@
     
     <!-- Gallery Section (Image Slider) -->
     <section id="gallery" class="py-20 bg-blue-700 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-16 left-8 w-24 h-24 bg-blue-600 rounded-full opacity-20 floating-bubble"></div>
+            <div class="absolute bottom-16 right-12 w-20 h-20 bg-blue-500 rounded-full opacity-15 floating-bubble delay-1"></div>
+            <div class="absolute top-32 right-24 w-16 h-16 bg-blue-400 rounded-full opacity-25 floating-bubble delay-2"></div>
+            <div class="absolute bottom-32 left-16 w-12 h-12 bg-blue-300 rounded-full opacity-20 floating-bubble delay-3"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Our Work</h2>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
@@ -564,8 +778,8 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg">
+                <div class="transform transition-transform duration-1000 hover:scale-105">
+                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg animate-float">
                         <img src="/Images//About_us.jpg" alt="Tip Top Shine Cleaning Team" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -602,8 +816,17 @@
     </section>
     
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-blue-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" class="py-20 bg-blue-800 relative">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-12 w-28 h-28 bg-blue-700 rounded-full opacity-20 floating-bubble delay-1"></div>
+            <div class="absolute bottom-24 right-8 w-22 h-22 bg-blue-600 rounded-full opacity-15 floating-bubble delay-2"></div>
+            <div class="absolute top-40 right-20 w-18 h-18 bg-blue-500 rounded-full opacity-25 floating-bubble"></div>
+            <div class="absolute bottom-40 left-20 w-14 h-14 bg-blue-400 rounded-full opacity-20 floating-bubble delay-3"></div>
+            <div class="absolute top-64 left-1/4 w-10 h-10 bg-blue-300 rounded-full opacity-15 floating-bubble delay-1"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
                 <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
@@ -817,8 +1040,16 @@
     </section>
     
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-blue-900 text-white py-12 relative">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-8 left-6 w-20 h-20 bg-blue-800 rounded-full opacity-20 floating-bubble"></div>
+            <div class="absolute bottom-8 right-10 w-16 h-16 bg-blue-700 rounded-full opacity-15 floating-bubble delay-2"></div>
+            <div class="absolute top-16 right-16 w-12 h-12 bg-blue-600 rounded-full opacity-25 floating-bubble delay-1"></div>
+            <div class="absolute bottom-16 left-12 w-8 h-8 bg-blue-500 rounded-full opacity-20 floating-bubble delay-3"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 flex items-center">
@@ -856,9 +1087,8 @@
                         <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Residential Cleaning</a></li>
                         <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Commercial Cleaning</a></li>
                         <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Post-Construction</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Salon Cleaning</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Laundry Services</a></li>
-                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Pressure Washing</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Hoarder Cleaning</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition duration-300">Move-In & Move-Out</a></li>
                     </ul>
                 </div>
                 
@@ -1013,6 +1243,48 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
+        });
+        
+        // Modal functionality
+        function showModal() {
+            const modal = document.getElementById('discountModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('discountModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Set cookie to remember user closed modal
+            document.cookie = "modalClosed=true; expires=" + new Date(Date.now() + 24*60*60*1000).toUTCString() + "; path=/";
+        }
+        
+        // Check if modal should be shown
+        function shouldShowModal() {
+            return !document.cookie.includes('modalClosed=true');
+        }
+        
+        // Show modal after 3 seconds if not previously closed
+        setTimeout(() => {
+            if (shouldShowModal()) {
+                showModal();
+            }
+        }, 3000);
+        
+        // Close modal when clicking outside
+        document.getElementById('discountModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
